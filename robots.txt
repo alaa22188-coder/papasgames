@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alaa22188-coder.github.io/papasgames/sitemap.xml
