@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- الصفحة الرئيسية للموقع -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/</loc>
+    <priority>1.00</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <!-- صفحة الخصوصية والاتصال -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/privacy-contact.html</loc>
+    <priority>0.30</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- لعبة باباس بيتزا -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papas-pizzeria.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة باباس ايس كريم -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papas-freezeria.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة باباس هوت دوج -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papas-hot-doggeria.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة باباس دجاج -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papas-wingeria.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة باباس سوشي -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papas-sushiria.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة باباس مكرونة -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papas-pastaria.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة باباس بان كيك -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papas-pancakeria.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة باباس كب كيك -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papas-cupcakeria.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة بابا لوي 1 هجوم البيتزا -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papa-louie-when-pizzas-attack.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة بابا لوي 2 -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papa-louie-2.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- لعبة بابا لوي 3 هجوم المثلجات -->
+  <url>
+    <loc>https://alaa22188-coder.github.io/papasgames/papa-louie-3.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+</urlset>
