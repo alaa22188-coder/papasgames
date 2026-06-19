@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العاب باباس</title>
+    <meta name="description" content="العب أفضل ألعاب باباس الشهيرة مجاناً وبدون تحميل! استمتع بإدارة مطاعم بابا لوي وطبخ أشهى الوجبات في ألعاب Papa's الكلاسيكية المفضلة لديك مباشرة على المتصفح.">
+    <link rel="canonical" href="index.html">
+    <style>
+        :root {
+            --bg-color: #f7f9fc; /* خلفية هادئة وفاتحة جداً مائلة للزرقة */
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* متدرج بنفسجي عصري */
+            --accent-color: #3182ce;
+            --border-radius: 16px; /* زوايا دائرية عصرية */
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo a {
+            font-size: 26px;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        nav a {
+            margin-right: 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: #667eea;
+        }
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #1a202c;
+            position: relative;
+            display: inline-block;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; right: 0;
+            width: 60px; height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+        /* شبكة الألعاب الحديثة */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        .game-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .game-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .game-card-img-wrapper {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            background-color: #e2e8f0;
+        }
+        .game-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .game-card:hover img {
+            transform: scale(1.08);
+        }
+        .game-card h2 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 15px;
+            text-align: center;
+            color: var(--text-main);
+        }
+        /* قسم النبذة العصري */
+        .site-about {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-right: 5px solid #667eea;
+        }
+        .site-about h2 {
+            font-size: 24px;
+            margin-top: 0;
+            color: #1a202c;
+        }
+        .site-about p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="#">العاب باباس</a></div>
+        <nav>
+            <a href="privacy-contact.html">الخصوصية والاتصال</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>أحدث الألعاب أون لاين</h1>
+
+        
+        <div class="games-grid">
+          
+			
+			
+			  <a href="papas-pizzeria.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papas-pizzeria.png" alt="لعبة باباس بيتزا" loading="lazy">
+                </div>
+                <h2>لعبة باباس بيتزا</h2>
+            </a>
+			
+			  <a href="papas-freezeria.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papas-freezeria.png" alt="لعبة باباس ايس كريم" loading="lazy">
+                </div>
+                <h2>لعبة باباس ايس كريم</h2>
+            </a>
+			
+			  <a href="papas-hot-doggeria.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papas-hot-doggeria.png" alt="لعبة باباس هوت دوج" loading="lazy">
+                </div>
+                <h2>لعبة باباس هوت دوج</h2>
+            </a>
+			
+			 <a href="papas-wingeria.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papas-wingeria.png" alt="لعبة باباس دجاج" loading="lazy">
+                </div>
+                <h2>لعبة باباس دجاج</h2>
+            </a>
+			
+			 <a href="papas-sushiria.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papas-sushiria.png" alt="لعبة باباس سوشي" loading="lazy">
+                </div>
+                <h2>لعبة باباس سوشي</h2>
+            </a>
+			
+			 <a href="papas-pastaria.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papas-pastaria.png" alt="لعبة باباس مكرونة" loading="lazy">
+                </div>
+                <h2>لعبة باباس مكرونة</h2>
+            </a>
+			
+			 <a href="papas-pancakeria.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papas-pancakeria.png" alt="لعبة باباس بان كيك" loading="lazy">
+                </div>
+                <h2>لعبة باباس بان كيك</h2>
+            </a>
+			
+			  <a href="papas-cupcakeria.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papas-cupcakeria.png" alt="لعبة باباس كب كيك" loading="lazy">
+                </div>
+                <h2>لعبة باباس كب كيك</h2>
+            </a>
+			
+			  <a href="papa-louie-when-pizzas-attack.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papa-louie-1.png" alt="لعبة بابا لوي 1 هجوم البيتزا" loading="lazy">
+                </div>
+                <h2>لعبة بابا لوي 1 هجوم البيتزا</h2>
+            </a>
+
+            <a href="papa-louie-2.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papa-louie-2.png" alt="لعبة بابا لوي 2" loading="lazy">
+                </div>
+                <h2>لعبة بابا لوي 2</h2>
+            </a>
+
+            <a href="papa-louie-3.html" class="game-card">
+                <div class="game-card-img-wrapper">
+                    <img src="papa-louie-3.png" alt="لعبة بابا لوي 3 هجوم المثلجات" loading="lazy">
+                </div>
+                <h2>لعبة بابا لوي 3 هجوم المثلجات</h2>
+            </a>
+			
+        </div>
+
+        <section class="site-about">
+            <h2>نبذة عن موقع العاب باباس</h2>
+            <p>
+إذا كنت من عشاق الطبخ، وإدارة المطاعم، والتحديات السريعة، فقد وصلت إلى المكان الصحيح! موقعنا هو الوجهة العربية الأولى المتخصصة بالكامل في سلسلة ألعاب باباس (Papa's Games) الكلاسيكية والشهيرة التي رافقتنا طوال السنوات الماضية.
+
+نحن نجمع لك كل إصدارات مغامرات الطاهي الشهير بابا لوي (Papa Louie) في مكان واحد وبأعلى جودة ممكنة. سواء كنت تفضل تحضير البيتزا المقرمشة في Papa's Pizzeria، أو إعداد الآيس كريم المنعش في Papa's Freezeria، أو حتى خوض مغامرات الأكشن الشيقة لإنقاذ الزبائن من هجوم الأطعمة المتحركة، ستجد كل هذا متوفراً لدينا مجاناً وبدون الحاجة لتحميل أي ملفات.
+
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 موقع العاب باباس. جميع الحقوق محفوظة.</p>
+    </footer>
+
+</body>
+</html>

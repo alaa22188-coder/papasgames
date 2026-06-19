@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة باباس مطعم الدجاج</title>
+    <meta name="description" content=" تستقبل فيها زوار مدينة الملاهي، وتسجل طلباتهم التفصيلية لعدد أجنحة الدجاج، نوع الصلصة، والمقبلات الجانبية على تذكرة المتابعة.">
+    <link rel="canonical" href="papas-wingeria.html">
+    <style>
+        :root {
+            --bg-color: #f7f9fc;
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --btn-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); /* زر وردي/برتقالي حيوي جداً */
+            --border-radius: 16px;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo a {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        nav a {
+            margin-right: 15px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        /* مشغل اللعبة العصري */
+        .game-container {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* هنا يمكنك تعديل أبعاد اللعبة كما سأشرح لك بالأسفل */
+            background-color: #1a202c;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 15px; /* تم تقليل الهامش قليلاً ليقترب زر ملء الشاشة */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .game-poster {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .poster-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 1;
+        }
+        .game-poster::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            backdrop-filter: blur(4px); /* تأثير زجاجي ضبابي خلف الزر */
+        }
+        .play-btn {
+            position: relative;
+            z-index: 3;
+            padding: 18px 45px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--btn-gradient);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 65, 108, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(255, 65, 108, 0.6);
+        }
+
+        /* ستايل زر ملء الشاشة الجديد */
+        .fullscreen-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #5142a7 0%, #ff416c 100%); /* متناسق مع ألوان موقعك والصورة */
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.2s;
+        }
+        .fullscreen-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* وصف اللعبة */
+        .game-description {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            line-height: 1.9;
+            margin-bottom: 50px;
+        }
+        .game-description h2 {
+            font-size: 22px;
+            margin-top: 0;
+            color: #1a202c;
+        }
+        .game-description p {
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+        
+        /* ألعاب مماثلة */
+        .related-games h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+        }
+        .game-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+        .game-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+        }
+        .game-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 12px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="index.html">العاب باباس</a></div>
+        <nav>
+            <a href="privacy-contact.html">الخصوصية والاتصال</a>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h1>لعبة باباس مطعم الدجاج</h1>
+            
+            <div class="game-container" id="gameBox">
+                <div class="game-poster">
+                    <img src="papas-wingeria.png" alt="العب لعبة باباس دجاج اون لاين مجانا" class="poster-img">
+                    <button class="play-btn" onclick="loadGame()">اضغط هنا لبدء اللعب</button>
+                </div>
+            </div>
+
+            <button class="fullscreen-btn" onclick="openFullscreen()"> ملء الشاشة</button>
+
+            <section class="game-description">
+                <h2>حول اللعبة وطريقة اللعب</h2>
+<section>
+        <p>تأخذك <strong>لعبة باباس أجنحة دجاج (Papa's Wingeria)</strong> في تجربة طهي مثيرة وسريعة داخل مدينة الملاهي والأضواء الساطعة "ستارلايت سيتي"! بعد أن قمت بربح رحلة مجانية وتوليت تشغيل رافعة الهدايا، تفاجأ بأن الجائزة الكبرى هي إدارة مطعم الدجاج المقلي والأجنحة الخاص بالطاهي الشهير <strong>بابا لوي (Papa Louie)</strong>. عليك الآن تشغيل المقالي العميقة، وقذف الأجنحة في الصلصات الحارة، ورص الطبق بشكل دائري متناسق لإرضاء زوار المدينة ومحبي الوجبات السريعة المقرمشة!</p>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>طريقة اللعب ومحطات العمل الأساسية</h2>
+        <p>تعتمد اللعبة على الدقة الشديدة في التوزيع ومراقبة الوقت، وتنقسم إلى 4 محطات عمل رئيسية مشوقة:</p>
+        
+        <ol>
+            <li>
+                <strong>محطة الطلبات (Order Station):</strong> 
+                تستقبل فيها زوار مدينة الملاهي، وتسجل طلباتهم التفصيلية لعدد أجنحة الدجاج، نوع الصلصة، والمقبلات الجانبية على تذكرة المتابعة.
+            </li>
+            <li>
+                <strong>محطة القلي (Fry Station):</strong> 
+                تضع أجنحة الدجاج، أو قطع الدبوس، أو أصابع الاستربس في المقالي العميقة (Deep Fryers). يجب عليك مراقبة مؤشر القلي بدقة وتقليب الدجاج لضمان قرمشة مثالية دون أن يحترق.
+            </li>
+            <li>
+                <strong>محطة الصلصة والخلط (Sauce Station):</strong> 
+                المحطة الأكثر متعة وحركة! تضع الدجاج المقلي في وعاء الخلط، وتختار الصلصة المطلوبة (كالباربيكيو، الخردل بالعسل، أو صوص البافالو الحار)، ثم تضغط على زر ضخ الصلصة بالكمية المحددة، وتقوم بهزّ الوعاء (Toss) لتغطية الدجاج بالكامل.
+            </li>
+            <li>
+                <strong>محطة الرص والتقديم (Build Station):</strong> 
+                المحطة التي تظهر مهاراتك الفنية! تقوم برص أجنحة الدجاج حول الطبق بشكل دائري مرتب ومنتظم، وتضيف المقبلات الجانبية المطلوبة (مثل أصابع الكرفس، الجزر، أو البطاطس المقلية) مع وضع وعاء صلصة الغمس (Dip) في المنتصف تماماً.
+            </li>
+        </ol>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>أسرار التميز وتطوير مطعم أجنحة الدجاج</h2>
+        <p>النجاح وسط أجواء مدينة الملاهي المزدحمة يتطلب ترقية معداتك وتقديم أطباق خالية من الأخطاء كالتالي:</p>
+        <ul>
+            <li><strong>التوزيع الدائري المنظم:</strong> كلما كان رص الأجنحة والمقبلات بمسافات متساوية ومتناسقة حول الطبق، كلما حصلت على تقييمات كاملة من الزبائن ترفع من قيمة البقشيش (Tips).</li>
+            <li><strong>تغير المواسم والصلصات الاحتفالية:</strong> مع تقدم الأيام واختلاف الأعياد في المدينة، ستفتح نكهات صلصات جديدة وحصرية، ومقبلات مقرمشة تزيد من تنوع وتحدي الطلبات اليومية.</li>
+            <li><strong>شراء ترقيات المقلاة والمتجر:</strong> يمكنك استغلال الأموال لشراء مقالي أوتوماتيكية أسرع، أو أجهزة لخلط الصلصة بضغطات أقل، بالإضافة إلى ديكورات مريحة لغرفة الانتظار لتقليل توتر الزبائن.</li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>مميزات اللعب على موقعنا</h2>
+        <ul>
+            <li>النسخة الأصلية الكاملة مجانية تماماً وتعمل مباشرة على المتصفح الخاص بك دون حاجة لتحميل أي ملفات.</li>
+            <li>سرعة تحميل فائقة وأداء سلس للغاية متوافق مع كافة المتصفحات وأجهزة الكمبيوتر لضمان تجربة لعب بدون تقطيع.</li>
+            <li>الخيار الأفضل لعشاق ألعاب الوجبات السريعة المقرمشة، وإدارة الوقت، وسلسلة ألعاب بابا لوي الشهيرة.</li>
+        </ul>
+    </section>            </section>
+        </article>
+
+    <section class="related-games">
+    <h2>ألعاب قد تعجبك أيضاً</h2>
+    <div class="games-grid" id="gamesGrid">
+        
+        <a href="papas-pizzeria.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papas-pizzeria.png" alt="لعبة باباس بيتزا" loading="lazy">
+            </div>
+            <h2>لعبة باباس بيتزا</h2>
+        </a>
+        
+        <a href="papas-freezeria.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papas-freezeria.png" alt="لعبة باباس ايس كريم" loading="lazy">
+            </div>
+            <h2>لعبة باباس ايس كريم</h2>
+        </a>
+        
+        <a href="papas-hot-doggeria.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papas-hot-doggeria.png" alt="لعبة باباس هوت دوج" loading="lazy">
+            </div>
+            <h2>لعبة باباس هوت دوج</h2>
+        </a>
+        
+        <a href="papas-wingeria.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papas-wingeria.png" alt="لعبة باباس دجاج" loading="lazy">
+            </div>
+            <h2>لعبة باباس دجاج</h2>
+        </a>
+        
+        <a href="papas-sushiria.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papas-sushiria.png" alt="لعبة باباس سوشي" loading="lazy">
+            </div>
+            <h2>لعبة باباس سوشي</h2>
+        </a>
+        
+        <a href="papas-pastaria.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papas-pastaria.png" alt="لعبة باباس مكرونة" loading="lazy">
+            </div>
+            <h2>لعبة باباس مكرونة</h2>
+        </a>
+        
+        <a href="papas-pancakeria.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papas-pancakeria.png" alt="لعبة باباس بان كيك" loading="lazy">
+            </div>
+            <h2>لعبة باباس بان كيك</h2>
+        </a>
+        
+        <a href="papas-cupcakeria.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papas-cupcakeria.png" alt="لعبة باباس كب كيك" loading="lazy">
+            </div>
+            <h2>لعبة باباس كب كيك</h2>
+        </a>
+        
+        <a href="papa-louie-when-pizzas-attack.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papa-louie-1.png" alt="لعبة بابا لوي 1 هجوم البيتزا" loading="lazy">
+            </div>
+            <h2>لعبة بابا لوي 1 هجوم البيتزا</h2>
+        </a>
+
+        <a href="papa-louie-2.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papa-louie-2.png" alt="لعبة بابا لوي 2" loading="lazy">
+            </div>
+            <h2>لعبة بابا لوي 2</h2>
+        </a>
+
+        <a href="papa-louie-3.html" class="game-card">
+            <div class="game-card-img-wrapper">
+                <img src="papa-louie-3.png" alt="لعبة بابا لوي 3 هجوم المثلجات" loading="lazy">
+            </div>
+            <h2>لعبة بابا لوي 3 هجوم المثلجات</h2>
+        </a>
+
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <p>2026 موقع العاب باباس. جميع الحقوق محفوظ .</p>
+    </footer>
+
+    <script>
+    function loadGame() {
+        var gameBox = document.getElementById('gameBox');
+        var gameUrl = "https://papas-games.io/papas-wingeria.embed"; 
+        gameBox.innerHTML = `<iframe src="${gameUrl}" allowfullscreen="true" frameborder="0"></iframe>`;
+    }
+
+    /* دالة تشغيل ملء الشاشة المضافة حديثاً */
+    function openFullscreen() {
+        var gameBox = document.getElementById('gameBox');
+        if (gameBox.requestFullscreen) {
+            gameBox.requestFullscreen();
+        } else if (gameBox.webkitRequestFullscreen) { /* لمتصفحات Safari و الأجهزة الذكية */
+            gameBox.webkitRequestFullscreen();
+        } else if (gameBox.msRequestFullscreen) { /* لمتصفحات IE */
+            gameBox.msRequestFullscreen();
+        }
+    }
+    </script>
+	<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const grid = document.getElementById("gamesGrid");
+    if (!grid) return;
+
+    // 1. تحويل الـ HTML nodes إلى مصفوفة (Array) للتعامل معها
+    const cards = Array.from(grid.children);
+    
+    // 2. الحصول على اسم الملف الحالي لصفحة اللعبة (مثال: papas-pizzeria.html)
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+    // 3. تصفية الألعاب (إخراج اللعبة الحالية من المصفوفة حتى لا تقترح نفسها)
+    const filteredCards = cards.filter(card => {
+        const cardHref = card.getAttribute("href");
+        if (cardHref === currentPath) {
+            card.remove(); // حذفها تماماً من الـ DOM
+            return false;
+        }
+        return true;
+    });
+
+    // 4. خوارزمية الترتيب العشوائي السريعة (Fisher-Yates Shuffle)
+    for (let i = filteredCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+    }
+
+    // 5. إعادة إدخال الألعاب بالترتيب العشوائي الجديد داخل الـ Grid
+    filteredCards.forEach(card => grid.appendChild(card));
+});
+</script>
+
+</body>
+</html>
